@@ -9,52 +9,71 @@ import TypedText from '../components/TypedText.astro';
 import AboutContent from '../components/AboutContent.astro';
 import Section from '../components/Section.astro';
 ---
-
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-    </head>
-    <body>
-        <Hero>
-            <nav slot="section-links">
-				<a href="#about" class="section-link">01 About Me</a>
-				<a href="#blog" class="section-link">02 Blog</a>
-				<a href="#contact" class="section-link">03 Get in Touch</a>
-			</nav>
-            <div style="margin: 0 auto; width: 600px;"><h1><TypedText><span style="color: #FD2653">//</span> Hello! I'm Halvor;</TypedText></h1></div>
-        </Hero>
-        <!--<Card><Header title={SITE_TITLE} /></Card>-->
-        <main>
-			<Section>
-				<div id="about"></div>
-				<AboutContent />
-			</Section>
-			<Section>
-				<div id="blog"></div>
-				<h2>Blog</h2>
-				<p>This is the blog section content.</p>
-			</Section>
-			<Section>
-				<div id="contact"></div>
-				<h2>Get in Touch</h2>
-				<p>This is the contact section content.</p>
-			</Section>
-        </main>
-        <Footer />
-    </body>
+  <head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+  </head>
+  <body>
+    <Hero>
+      <nav slot="section-links">
+        <a href="#about" class="section-link">01 About Me</a>
+        <a href="#blog" class="section-link">02 Blog</a>
+        <a href="#contact" class="section-link">03 Get in Touch</a>
+      </nav>
+      <div class="hero-content">
+          <h1>
+            <TypedText>
+              <span style="color: #FD2653">//</span> Under Construction;
+            </TypedText>
+          </h1>
+      </div>
+    </Hero>
+    <!--<Card><Header title={SITE_TITLE} /></Card>-->
+    <main>
+      <Section>
+        <div id="about"></div>
+        <AboutContent />
+      </Section>
+      <Section>
+        <div id="blog"></div>
+        <h2>Blog</h2>
+        <p>This is the blog section content.</p>
+      </Section>
+      <Section>
+        <div id="contact"></div>
+        <h2>Get in Touch</h2>
+        <p>This is the contact section content.</p>
+      </Section>
+    </main>
+    <Footer />
+  </body>
 </html>
 
 <style>
 .section-link {
-    color: var(--corner-text-color);
-    text-decoration: none;
-    transition: color 0.3s ease-in-out;
-	display: block;
-    margin-bottom: 1em;
+  color: var(--corner-text-color);
+  text-decoration: none;
+  transition: color 0.3s ease-in-out;
+  display: block;
+  margin-bottom: 1em;
 }
 
 .section-link:hover {
-    color: #FD2653;
+  color: #FD2653;
+}
+
+.hero-content {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+}
+
+.hero-content > h1 {
+  font-size: 40px;
+  text-align: center;
+  margin-top: 300px;
 }
 </style>
