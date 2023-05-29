@@ -1,0 +1,30 @@
+---
+import Card from "./Card.astro";
+
+---
+
+<style>
+    .card-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+        margin: 0 auto;
+        max-width: 1000px;
+    }
+
+    .card {
+        width: 100%;
+    }
+</style>
+
+<h2>About Me</h2>
+<div class="card-container">
+    <Card class="card">
+        <h3>Software Engineering</h3>
+        <p>This is a card about software engineering.</p>
+    </Card>
+    <Card class="card">
+        <h3>Software Engineering</h3>
+        <p>This is a card about software engineering.</p>
+    </Card>
+</div>

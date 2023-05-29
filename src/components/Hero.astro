@@ -1,0 +1,84 @@
+<div class="hero">
+    <div class="corner top-left">
+        <div class="corner-content">
+            <slot name="section-links"></slot>
+        </div>
+    </div>
+    <div class="corner top-right"></div>
+    <div class="content">
+        <slot />
+    </div>
+    <div class="corner bottom-left"></div>
+    <div class="corner bottom-right"></div>
+</div>
+
+<style>
+    :root {
+        --corner-size: 150px;
+        --corner-border-width: 2px;
+        --corner-text-color: white;
+        --corner-text-padding: 20px;
+        --content-padding: 100px;
+        --distance-from-edge: 40px;
+    }
+
+    .hero {
+        position: relative;
+        margin: 0;
+        padding: 0;
+        width: 100vw;
+        min-height: 100vh;
+    }
+
+    .corner {
+        position: absolute;
+        width: var(--corner-size);
+        height: var(--corner-size);
+    }
+
+    .top-left {
+        top: var(--distance-from-edge);
+        left: var(--distance-from-edge);
+        border-top: var(--corner-border-width) dashed white;
+        border-left: var(--corner-border-width) dashed white;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+    }
+
+    .top-right {
+        top: var(--distance-from-edge);
+        right: var(--distance-from-edge);
+        border-top: var(--corner-border-width) dashed white;
+        border-right: var(--corner-border-width) dashed white;
+    }
+
+    .bottom-left {
+        bottom: var(--distance-from-edge);
+        left: var(--distance-from-edge);
+        border-bottom: var(--corner-border-width) dashed white;
+        border-left: var(--corner-border-width) dashed white;
+    }
+
+    .bottom-right {
+        bottom: var(--distance-from-edge);
+        right: var(--distance-from-edge);
+        border-bottom: var(--corner-border-width) dashed white;
+        border-right: var(--corner-border-width) dashed white;
+    }
+    
+    .content {
+        padding-top: var(--content-padding);
+        padding-bottom: var(--content-padding);
+    }
+    
+    .corner-content {
+        padding-top: 10px;
+        padding-left: 20px;
+        width: 200px;
+        color: var(--corner-text-color);
+        text-align: left;
+        margin: var(--corner-text-padding);
+    }
+</style>
