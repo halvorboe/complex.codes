@@ -1,15 +1,23 @@
 ---
-import BaseHead from '../components/BaseHead.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
-import Card from '../components/Card.astro';
-import Hero from '../components/Hero.astro';
-import TypedText from '../components/TypedText.astro';
-import AboutContent from '../components/AboutContent.astro';
-import Section from '../components/Section.astro';
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
+import Card from "../components/Card.astro";
+import Hero from "../components/Hero.astro";
+import TypedText from "../components/TypedText.astro";
+import AboutContent from "../components/AboutContent.astro";
+import Section from "../components/Section.astro";
+
+import { getCollection } from "astro:content";
+import FormattedDate from "../components/FormattedDate.astro";
+
+const posts = (await getCollection("blog")).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+const newestPost = posts[0];
 ---
-<!DOCTYPE html>
+
 <html lang="en">
   <head>
     <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
@@ -22,58 +30,85 @@ import Section from '../components/Section.astro';
         <a href="#contact" class="section-link">03 Get in Touch</a>
       </nav>
       <div class="hero-content">
-          <h1>
-            <TypedText>
-              <span style="color: #FD2653">//</span> Under Construction;
-            </TypedText>
-          </h1>
+        <h1>
+          Hey, I'm Halvor!
+
+          <!-- <TypedText>
+            <div><span style="color: #FD2653">//</span> Complex Codes;</div>  
+          </TypedText> -->
+        </h1>
+        <h3>
+          Software engineer and occasional rambler from Oslo, Norway. To indulge
+          in my latest post, click
+          <a href={`/blog/${newestPost.slug}/`}> here</a>.
+        </h3>
       </div>
     </Hero>
     <!--<Card><Header title={SITE_TITLE} /></Card>-->
     <main>
-      <Section>
+      <!-- <Section>
         <div id="about"></div>
         <AboutContent />
-      </Section>
+      </Section>-->
       <Section>
         <div id="blog"></div>
         <h2>Blog</h2>
         <p>This is the blog section content.</p>
+        <ul>
+          {
+            posts.map((post) => (
+              <li>
+                <FormattedDate date={post.data.pubDate} />
+                <a href={`/blog/${post.slug}/`}>{post.data.title}</a>
+              </li>
+            ))
+          }
+        </ul>
       </Section>
       <Section>
         <div id="contact"></div>
         <h2>Get in Touch</h2>
-        <p>This is the contact section content.</p>
+        <h3>This is the contact section content.</h3>
       </Section>
     </main>
     <Footer />
+    <style>
+      .section-link {
+        color: var(--corner-text-color);
+        text-decoration: none;
+        transition: color 0.3s ease-in-out;
+        display: block;
+        margin-bottom: 1em;
+        z-index: 100;
+      }
+
+      .section-link:hover {
+        color: #fd2653;
+      }
+
+      a {
+        color: #fd2653;
+      }
+
+      .hero-content {
+        position: absolute;
+        width: 100vw;
+        height: 100vh;
+        top: 0;
+        left: 0;
+      }
+
+      .hero-content > h1 {
+        font-size: 40px;
+        text-align: center;
+        margin-top: 300px;
+      }
+
+      .hero-content > h3 {
+        font-weight: 300;
+        margin: 0 auto;
+        max-width: 600px;
+      }
+    </style>
   </body>
 </html>
-
-<style>
-.section-link {
-  color: var(--corner-text-color);
-  text-decoration: none;
-  transition: color 0.3s ease-in-out;
-  display: block;
-  margin-bottom: 1em;
-}
-
-.section-link:hover {
-  color: #FD2653;
-}
-
-.hero-content {
-  position: absolute;
-  width: 100vw;
-  height: 100vh;
-  top: 0;
-  left: 0;
-}
-
-.hero-content > h1 {
-  font-size: 40px;
-  text-align: center;
-  margin-top: 300px;
-}
-</style>
