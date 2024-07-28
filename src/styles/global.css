@@ -8,16 +8,27 @@ body {
 	font-family: 'Roboto';
 	margin: auto;
 	text-align: left;
-	background-color: #030108;
 	word-wrap: break-word;
 	overflow-wrap: break-word;
 	line-height: 1.5;
-	color: #fff;
 }
+
 
 html {
     scroll-behavior: smooth;
 }
+
+html {
+	background-color: #fff;
+	color: #161616;
+}
+
+html.dark {
+	background-color: #161616;
+	color: #fff;
+
+}
+
 
 h1,
 h2,
@@ -28,7 +39,47 @@ h6,
 strong,
 b {
 	font-family: 'Space Mono', monospace;
-	color: #eee;
+	color: #2a2a2a;
+}
+
+.dark h1,
+.dark h2,
+.dark h3,
+.dark h4,
+.dark h5,
+.dark h6,
+.dark strong,
+.dark b{
+	font-family: 'Space Mono', monospace;
+	color: #eaeaea;
+}
+
+h1 {
+	font-size: 2.5rem;
+}
+
+h2 {
+	font-size: 2.0rem;
+}
+
+h3 {
+	font-size: 1.8rem;
+}
+
+h4 {
+	font-size: 1.5rem;
+}
+
+h5 {
+	font-size: 1.2rem;
+}
+
+h6 {
+	font-size: 1.2rem;
+}
+
+p {
+	font-size: 1.2rem;
 }
 a {
 	color: #3273dc;
@@ -55,6 +106,10 @@ img {
 }
 code {
 	padding: 2px 5px;
+	background-color: #ebebeb;
+}
+.dark code {
+	padding: 2px 5px;
 	background-color: #313131;
 }
 pre {
@@ -63,9 +118,9 @@ pre {
 pre > code {
 	all: unset;
 }
+
 blockquote {
 	border: 1px solid #999;
-	color: #222;
 	padding: 2px 0px 2px 20px;
 	margin: 0px;
 	font-style: italic;

@@ -1,14 +1,23 @@
+---
+import ThemeIcon from "./ThemeIcon.astro";
+---
+
 <div class="hero">
   <!-- This needs to be first, otherwise links from the rest of the header covers it -->
   <div class="content">
     <slot />
   </div>
   <div class="corner top-left">
-    <div class="corner-content">
+    <div class="corner-content-left">
       <slot name="section-links" />
     </div>
   </div>
-  <div class="corner top-right"></div>
+  <div class="corner top-right">
+    <div class="corner-content-right">
+      <ThemeIcon />
+
+    </div>
+  </div>
   <div class="corner bottom-left"></div>
   <div class="corner bottom-right"></div>
 </div>
@@ -17,11 +26,16 @@
   :root {
     --corner-size: 150px;
     --corner-border-width: 2px;
-    --corner-text-color: white;
+    --corner-text-color: rgb(52, 52, 52);
     --corner-text-padding: 20px;
     --content-padding: 100px;
     --distance-from-edge: 40px;
   }
+
+  :root.dark {
+    --corner-text-color: white;
+  }
+
 
   .hero {
     position: relative;
@@ -40,8 +54,8 @@
   .top-left {
     top: var(--distance-from-edge);
     left: var(--distance-from-edge);
-    border-top: var(--corner-border-width) dashed white;
-    border-left: var(--corner-border-width) dashed white;
+    border-top: var(--corner-border-width) dashed var(--corner-text-color);
+    border-left: var(--corner-border-width) dashed var(--corner-text-color);
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -51,15 +65,15 @@
   .top-right {
     top: var(--distance-from-edge);
     right: var(--distance-from-edge);
-    border-top: var(--corner-border-width) dashed white;
-    border-right: var(--corner-border-width) dashed white;
+    border-top: var(--corner-border-width) dashed var(--corner-text-color);
+    border-right: var(--corner-border-width) dashed var(--corner-text-color);
   }
 
   .bottom-left {
     bottom: var(--distance-from-edge);
     left: var(--distance-from-edge);
-    border-bottom: var(--corner-border-width) dashed white;
-    border-left: var(--corner-border-width) dashed white;
+    border-bottom: var(--corner-border-width) dashed var(--corner-text-color);
+    border-left: var(--corner-border-width) dashed var(--corner-text-color);
   }
 
   .bottom-right {
@@ -74,12 +88,19 @@
     padding-bottom: var(--content-padding);
   }
 
-  .corner-content {
+  .corner-content-left {
     padding-top: 10px;
     padding-left: 20px;
     width: 200px;
     color: var(--corner-text-color);
     text-align: left;
     margin: var(--corner-text-padding);
+  }
+
+  .corner-content-right {
+    width: 20px;
+    color: var(--corner-text-color);
+    text-align: right;
+    margin: var(--corner-text-padding)  50px var(--corner-text-padding) auto ;
   }
 </style>
