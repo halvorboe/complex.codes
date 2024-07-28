@@ -38,8 +38,8 @@ const newestPost = posts[0];
           </TypedText> -->
         </h1>
         <h5>
-          Software engineer and occasional rambler from Oslo, Norway. To read
-          in my latest post, click
+          Software engineer and occasional rambler from Oslo, Norway. To read in
+          my latest post, click
           <a href={`/blog/${newestPost.slug}/`}> here</a>.
         </h5>
       </div>
@@ -66,9 +66,10 @@ const newestPost = posts[0];
         </ul>
       </Section>
       <Section>
-        <div id="contact"></div>
-        <h2>Get in Touch</h2>
-        <h4>This is the contact section content.</h4>
+        <div id="contact">
+          <h2>Get in Touch</h2>
+          <p>This is the contact section content.</p>
+        </div>
       </Section>
     </main>
     <Footer />
@@ -104,13 +105,13 @@ const newestPost = posts[0];
         text-align: center;
         margin-top: 300px;
         margin: 300px auto 20px auto;
-        max-width:  min(600px, 70vw);
+        max-width: min(600px, 70vw);
       }
 
       .hero-content > h5 {
         font-weight: 300;
         margin: 0 auto;
-        max-width:  min(600px, 70vw);
+        max-width: min(600px, 70vw);
       }
     </style>
   </body>

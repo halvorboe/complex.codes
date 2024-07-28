@@ -15,7 +15,6 @@ import ThemeIcon from "./ThemeIcon.astro";
   <div class="corner top-right">
     <div class="corner-content-right">
       <ThemeIcon />
-
     </div>
   </div>
   <div class="corner bottom-left"></div>
@@ -35,7 +34,6 @@ import ThemeIcon from "./ThemeIcon.astro";
   :root.dark {
     --corner-text-color: white;
   }
-
 
   .hero {
     position: relative;
@@ -79,8 +77,8 @@ import ThemeIcon from "./ThemeIcon.astro";
   .bottom-right {
     bottom: var(--distance-from-edge);
     right: var(--distance-from-edge);
-    border-bottom: var(--corner-border-width) dashed  var(--corner-text-color);
-    border-right: var(--corner-border-width) dashed  var(--corner-text-color);
+    border-bottom: var(--corner-border-width) dashed var(--corner-text-color);
+    border-right: var(--corner-border-width) dashed var(--corner-text-color);
   }
 
   .content {
@@ -98,9 +96,9 @@ import ThemeIcon from "./ThemeIcon.astro";
   }
 
   .corner-content-right {
-    width: 20px;
+    width: 30px;
     color: var(--corner-text-color);
     text-align: right;
-    margin: var(--corner-text-padding)  50px var(--corner-text-padding) auto ;
+    margin: var(--corner-text-padding) 25px 0 auto;
   }
 </style>

@@ -1,19 +1,19 @@
 <style>
-    .typed-text {
-      display: inline-block;
-      overflow: hidden;
-      animation: typing-animation 1s steps(40) forwards;
-      white-space: nowrap;
+  .typed-text {
+    display: inline-block;
+    overflow: hidden;
+    animation: typing-animation 1s steps(40) forwards;
+    white-space: nowrap;
+  }
+
+  @keyframes typing-animation {
+    from {
+      width: 0;
     }
-  
-    @keyframes typing-animation {
-      from {
-        width: 0;
-      }
-      to {
-        width: 100%;
-      }
+    to {
+      width: 100%;
     }
-  </style>
-  
-  <span class="typed-text"><slot/></span>
+  }
+</style>
+
+<span class="typed-text"><slot /></span>
