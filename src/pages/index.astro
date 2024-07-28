@@ -37,11 +37,11 @@ const newestPost = posts[0];
             <div><span style="color: #FD2653">//</span> Complex Codes;</div>  
           </TypedText> -->
         </h1>
-        <h3>
+        <h5>
           Software engineer and occasional rambler from Oslo, Norway. To read
           in my latest post, click
           <a href={`/blog/${newestPost.slug}/`}> here</a>.
-        </h3>
+        </h5>
       </div>
     </Hero>
     <!--<Card><Header title={SITE_TITLE} /></Card>-->
@@ -68,7 +68,7 @@ const newestPost = posts[0];
       <Section>
         <div id="contact"></div>
         <h2>Get in Touch</h2>
-        <h3>This is the contact section content.</h3>
+        <h4>This is the contact section content.</h4>
       </Section>
     </main>
     <Footer />
@@ -103,12 +103,14 @@ const newestPost = posts[0];
         font-size: 40px;
         text-align: center;
         margin-top: 300px;
+        margin: 300px auto 20px auto;
+        max-width:  min(600px, 70vw);
       }
 
-      .hero-content > h3 {
+      .hero-content > h5 {
         font-weight: 300;
         margin: 0 auto;
-        max-width: 600px;
+        max-width:  min(600px, 70vw);
       }
     </style>
   </body>
