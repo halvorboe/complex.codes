@@ -1,13 +1,27 @@
+---
+const { line } = Astro.props;
+---
 <section>
-  <div class="content">
+  <div class={"content" + (line !== undefined ? " line" : "") }>
     <slot />
   </div>
 </section>
 
 <style>
+  :root {
+    --corner-text-color: rgb(52, 52, 52);
+  }
+
+  :root.dark {
+    --corner-text-color: white;
+  }
+
+  .line {
+    border-top: 2px dashed var(--corner-text-color);
+  }
+
   section {
-    border-top: 2px dashed #fff;
-    padding: 50px 50px; /* Adjust as needed for the desired spacing */
+    padding: 10px 10px; /* Adjust as needed for the desired spacing */
   }
 
   .content {

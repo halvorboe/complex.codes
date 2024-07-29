@@ -55,7 +55,7 @@ b {
 }
 
 h1 {
-	font-size: 2.5rem;
+	font-size: 2.2rem;
 }
 
 h2 {
@@ -78,12 +78,19 @@ h6 {
 	font-size: 1.2rem;
 }
 
-p {
-	font-size: 1.2rem;
+p, li {
+	font-size: 1.1rem;
 }
 a {
-	color: #3273dc;
+    color: #fd2653;
 }
+a:hover {
+    color: #ff89a3;
+}
+a:visited {
+    color: #793745;
+}
+
 nav a {
 	margin-right: 10px;
 }

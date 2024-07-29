@@ -8,6 +8,7 @@ import Hero from "../components/Hero.astro";
 import TypedText from "../components/TypedText.astro";
 import AboutContent from "../components/AboutContent.astro";
 import Section from "../components/Section.astro";
+import HeaderLink from "../components/HeaderLink.astro";
 
 import { getCollection } from "astro:content";
 import FormattedDate from "../components/FormattedDate.astro";
@@ -25,7 +26,7 @@ const newestPost = posts[0];
   <body>
     <Hero>
       <nav slot="section-links">
-        <a href="#about" class="section-link">01 About Me</a>
+        <a href="#about" class="section-link">01 Whoami</a>
         <a href="#blog" class="section-link">02 Blog</a>
         <a href="#contact" class="section-link">03 Get in Touch</a>
       </nav>
@@ -46,14 +47,24 @@ const newestPost = posts[0];
     </Hero>
     <!--<Card><Header title={SITE_TITLE} /></Card>-->
     <main>
-      <!-- <Section>
-        <div id="about"></div>
-        <AboutContent />
-      </Section>-->
       <Section>
-        <div id="blog"></div>
+        <div id="about">
+          <h1>Whoami</h1>
+          <p>I'm a software engineer, currently working in Paris. My areas of interest include back-end, security, and product design. And then the hard part, which is how you convert those interests into something tangible - like a company.</p>
+          <h4>Work experience</h4> 
+          <ul>
+            <li><strong>Recrut / Highered (2018-2020)</strong> Co-founded HR tech company in university. Was aquired by <a href="https://gethighered.com">Highered</a> and ended up spending some time re-building their <a href="https://gethighered.com/en">site</a> from scratch.</li>
+            <li><strong>Favn (2020-)</strong> Co-founded <a href="https://favn.com">a consulting company</a> as CEO. Since late 2020 I've been on the board, overseeing 5 full-time employees helping startups build their products.</li>
+            <li><strong>Palantir (2020-2024)</strong> Worked as a Forward Deployed Enginner at <a href="http://palantir.com/">Palantir</a>. Spent most of the time in Production Engineering teams and with the last year spent on LLM use-cases within Production Engineering specifically. </li>
+            <li><strong>Stealth (2024-)</strong> Currently working at a stealth startup as a Software Engineer. </li>
+          </ul>
+
+        </div>
+      </Section>
+      <Section>
+        <div id="blog">
         <h2>Blog</h2>
-        <p>This is the blog section content.</p>
+        <p>Most recent blog posts can be found below:</p>
         <ul>
           {
             posts.map((post) => (
@@ -64,11 +75,17 @@ const newestPost = posts[0];
             ))
           }
         </ul>
+        <p>Click <a href="/blog">here</a> to see all blog posts</p>
+      </div>
       </Section>
       <Section>
         <div id="contact">
           <h2>Get in Touch</h2>
-          <p>This is the contact section content.</p>
+          <h5>
+          <a href="https://x.com/helt_halvor" target="_blank">Twitter</a>
+          <a href="https://github.com/halvorboe" target="_blank">GitHub</a>
+          <a href="https://linkedin.com/in/halvorboe" target="_blank">LinkedIn</a>
+          </h5>
         </div>
       </Section>
     </main>
@@ -105,13 +122,13 @@ const newestPost = posts[0];
         text-align: center;
         margin-top: 300px;
         margin: 300px auto 20px auto;
-        max-width: min(600px, 70vw);
+        max-width: min(800px, 70vw);
       }
 
       .hero-content > h5 {
         font-weight: 300;
         margin: 0 auto;
-        max-width: min(600px, 70vw);
+        max-width: min(800px, 70vw);
       }
     </style>
   </body>
