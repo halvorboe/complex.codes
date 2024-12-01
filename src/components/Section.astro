@@ -1,8 +1,9 @@
 ---
 const { line } = Astro.props;
 ---
+
 <section>
-  <div class={"content" + (line !== undefined ? " line" : "") }>
+  <div class={"content" + (line !== undefined ? " line" : "")}>
     <slot />
   </div>
 </section>

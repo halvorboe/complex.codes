@@ -1,20 +1,15 @@
 ---
 import BaseHead from "../components/BaseHead.astro";
-import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
-import Card from "../components/Card.astro";
 import Hero from "../components/Hero.astro";
-import TypedText from "../components/TypedText.astro";
-import AboutContent from "../components/AboutContent.astro";
 import Section from "../components/Section.astro";
-import HeaderLink from "../components/HeaderLink.astro";
 
 import { getCollection } from "astro:content";
 import FormattedDate from "../components/FormattedDate.astro";
 
 const posts = (await getCollection("blog")).sort(
-  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 );
 const newestPost = posts[0];
 ---
@@ -31,13 +26,7 @@ const newestPost = posts[0];
         <a href="#contact" class="section-link">03 Get in Touch</a>
       </nav>
       <div class="hero-content">
-        <h1>
-          Hey, I'm Halvor!
-
-          <!-- <TypedText>
-            <div><span style="color: #FD2653">//</span> Complex Codes;</div>  
-          </TypedText> -->
-        </h1>
+        <h1>Hey, I'm Halvor!</h1>
         <h5>
           Software engineer and occasional rambler from Oslo, Norway. To read in
           my latest post, click
@@ -50,41 +39,64 @@ const newestPost = posts[0];
       <Section>
         <div id="about">
           <h1>Whoami</h1>
-          <p>I'm a software engineer, currently working in Paris. My areas of interest include back-end, security, and product design. And then the hard part, which is how you convert those interests into something tangible - like a company.</p>
-          <h4>Work experience</h4> 
+          <p>
+            I'm a software engineer based in Paris, with an interest in back-end
+            development, security, and building products.
+          </p>
+          <h4>Work experience</h4>
           <ul>
-            <li><strong>Recrut / Highered (2018-2020)</strong> Co-founded HR tech company in university. Was aquired by <a href="https://gethighered.com">Highered</a> and ended up spending some time re-building their <a href="https://gethighered.com/en">site</a> from scratch.</li>
-            <li><strong>Favn (2020-)</strong> Co-founded <a href="https://favn.com">a consulting company</a> as CEO. Since late 2020 I've been on the board, overseeing 5 full-time employees helping startups build their products.</li>
-            <li><strong>Palantir (2020-2024)</strong> Worked as a Forward Deployed Enginner at <a href="http://palantir.com/">Palantir</a>. Spent most of the time in Production Engineering teams and with the last year spent on LLM use-cases within Production Engineering specifically. </li>
-            <li><strong>Stealth (2024-)</strong> Currently working at a stealth startup as a Software Engineer. </li>
+            <li>
+              <strong>Recrut / Highered (2018-2020)</strong> Co-founded HR tech company
+              in university as CTO. Aquired by <a href="https://gethighered.com"
+                >Highered</a
+              > and spent time building their <a
+                href="https://gethighered.com/en">site</a
+              > from scratch.
+            </li>
+            <li>
+              <strong>Favn (2020-)</strong> Co-founded <a
+                href="https://favn.com">a consulting company</a
+              > as CEO. Helped multiple startups build their MVPs.
+            </li>
+            <li>
+              <strong>Palantir (2020-2024)</strong> Worked as a Forward Deployed
+              Enginner at <a href="http://palantir.com/">Palantir</a>. Spent
+              time in Production Engineering teams and with the last year spent
+              on LLM use-cases within Production Engineering.
+            </li>
+            <li>
+              <strong>Stealth (2024-)</strong> Currently working at a stealth startup
+              as a Software Engineer.
+            </li>
           </ul>
-
         </div>
       </Section>
       <Section>
         <div id="blog">
-        <h2>Blog</h2>
-        <p>Most recent blog posts can be found below:</p>
-        <ul>
-          {
-            posts.map((post) => (
-              <li>
-                <FormattedDate date={post.data.pubDate} />
-                <a href={`/blog/${post.slug}/`}>{post.data.title}</a>
-              </li>
-            ))
-          }
-        </ul>
-        <p>Click <a href="/blog">here</a> to see all blog posts</p>
-      </div>
+          <h2>Blog</h2>
+          <p>Most recent blog posts can be found below:</p>
+          <ul>
+            {
+              posts.map((post) => (
+                <li>
+                  <FormattedDate date={post.data.pubDate} />
+                  <a href={`/blog/${post.slug}/`}>{post.data.title}</a>
+                </li>
+              ))
+            }
+          </ul>
+          <p>Click <a href="/blog">here</a> to see all blog posts</p>
+        </div>
       </Section>
       <Section>
         <div id="contact">
           <h2>Get in Touch</h2>
           <h5>
-          <a href="https://x.com/helt_halvor" target="_blank">Twitter</a>
-          <a href="https://github.com/halvorboe" target="_blank">GitHub</a>
-          <a href="https://linkedin.com/in/halvorboe" target="_blank">LinkedIn</a>
+            <a href="https://x.com/helt_halvor" target="_blank">Twitter</a>
+            <a href="https://github.com/halvorboe" target="_blank">GitHub</a>
+            <a href="https://linkedin.com/in/halvorboe" target="_blank"
+              >LinkedIn</a
+            >
           </h5>
         </div>
       </Section>
