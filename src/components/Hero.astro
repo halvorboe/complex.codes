@@ -19,6 +19,11 @@ import ThemeIcon from "./ThemeIcon.astro";
   </div>
   <div class="corner bottom-left"></div>
   <div class="corner bottom-right"></div>
+
+  <!-- Add scroll indicator -->
+  <div class="scroll-indicator">
+    <div class="scroll-arrow"></div>
+  </div>
 </div>
 
 <style>
@@ -100,5 +105,60 @@ import ThemeIcon from "./ThemeIcon.astro";
     color: var(--corner-text-color);
     text-align: right;
     margin: var(--corner-text-padding) 25px 0 auto;
+  }
+
+  .scroll-indicator {
+    position: absolute;
+    bottom: calc(var(--distance-from-edge) - 1px);
+    left: 50%;
+    transform: translateX(-50%);
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+  }
+
+  .scroll-arrow {
+    width: 12px;
+    height: 12px;
+    border-right: var(--corner-border-width) dashed var(--corner-text-color);
+    border-bottom: var(--corner-border-width) dashed var(--corner-text-color);
+    transform: rotate(45deg);
+    animation: bounce 2s infinite;
+    margin-bottom: 6px;
+  }
+
+  @keyframes bounce {
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
+      transform: translateY(0) rotate(45deg);
+    }
+    40% {
+      transform: translateY(-10px) rotate(45deg);
+    }
+    60% {
+      transform: translateY(-5px) rotate(45deg);
+    }
+  }
+
+  @media (max-width: 768px) {
+    :root {
+      --corner-size: 100px;
+      --corner-border-width: 2.5px;
+      --corner-text-padding: 10px;
+      --content-padding: 60px;
+      --distance-from-edge: 20px;
+    }
+
+    .scroll-arrow {
+      width: 8px;
+      height: 8px;
+      border-width: var(--corner-border-width);
+      margin-bottom: 4px;
+    }
   }
 </style>

@@ -9,7 +9,7 @@ import { getCollection } from "astro:content";
 import FormattedDate from "../components/FormattedDate.astro";
 
 const posts = (await getCollection("blog")).sort(
-  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
 );
 const newestPost = posts[0];
 ---
@@ -20,7 +20,7 @@ const newestPost = posts[0];
   </head>
   <body>
     <Hero>
-      <nav slot="section-links">
+      <nav slot="section-links" class="desktop-nav">
         <a href="#about" class="section-link">01 Whoami</a>
         <a href="#blog" class="section-link">02 Blog</a>
         <a href="#contact" class="section-link">03 Get in Touch</a>
@@ -28,9 +28,9 @@ const newestPost = posts[0];
       <div class="hero-content">
         <h1>Hey, I'm Halvor!</h1>
         <h5>
-          Software engineer and occasional rambler from Oslo, Norway. To read in
-          my latest post, click
-          <a href={`/blog/${newestPost.slug}/`}> here</a>.
+          Software engineer and occasional rambler from Oslo, Norway. Check out
+          <a href={`/blog/${newestPost.slug}/`}>my latest post</a> to see what I've
+          been thinking about.
         </h5>
       </div>
     </Hero>
@@ -40,33 +40,33 @@ const newestPost = posts[0];
         <div id="about">
           <h1>Whoami</h1>
           <p>
-            I'm a software engineer based in Paris, with an interest in back-end
+            I'm a software engineer based in Paris, with a focus on back-end
             development, security, and building products.
           </p>
           <h4>Work experience</h4>
           <ul>
             <li>
-              <strong>Recrut / Highered (2018-2020)</strong> Co-founded HR tech company
-              in university as CTO. Aquired by <a href="https://gethighered.com"
-                >Highered</a
-              > and spent time building their <a
-                href="https://gethighered.com/en">site</a
-              > from scratch.
+              <strong>Recrut / Highered (2018-2020)</strong> Co-founded an HR tech
+              company during university as CTO. After being acquired by <a
+                href="https://gethighered.com">Highered</a
+              >, I helped build their <a href="https://gethighered.com/en"
+                >platform</a
+              > from the ground up.
             </li>
             <li>
               <strong>Favn (2020-)</strong> Co-founded <a
                 href="https://favn.com">a consulting company</a
-              > as CEO. Helped multiple startups build their MVPs.
+              > as CEO, helping multiple startups build their MVPs.
             </li>
             <li>
               <strong>Palantir (2020-2024)</strong> Worked as a Forward Deployed
-              Enginner at <a href="http://palantir.com/">Palantir</a>. Spent
-              time in Production Engineering teams and with the last year spent
-              on LLM use-cases within Production Engineering.
+              Engineer at <a href="http://palantir.com/">Palantir</a>. Worked on
+              Production Engineering teams, with my final year focused on LLM
+              applications within Production Engineering.
             </li>
             <li>
-              <strong>Stealth (2024-)</strong> Currently working at a stealth startup
-              as a Software Engineer.
+              <strong>Stealth (2024-)</strong> Currently working as a Software Engineer
+              at a stealth startup.
             </li>
           </ul>
         </div>
@@ -123,24 +123,60 @@ const newestPost = posts[0];
 
       .hero-content {
         position: absolute;
-        width: 100vw;
-        height: 100vh;
-        top: 0;
-        left: 0;
+        width: 100%;
+        min-height: 100vh;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 2rem;
+        box-sizing: border-box;
+        text-align: center;
       }
 
       .hero-content > h1 {
-        font-size: 40px;
+        font-size: clamp(32px, 5vw, 40px);
         text-align: center;
-        margin-top: 300px;
-        margin: 300px auto 20px auto;
-        max-width: min(800px, 70vw);
+        margin: 0 0 1.5rem 0;
+        max-width: min(800px, 90vw);
+        line-height: 1.2;
       }
 
       .hero-content > h5 {
         font-weight: 300;
         margin: 0 auto;
-        max-width: min(800px, 70vw);
+        max-width: min(800px, 90vw);
+        text-align: center;
+        line-height: 1.6;
+      }
+
+      .desktop-nav {
+        @media (max-width: 768px) {
+          display: none;
+        }
+      }
+
+      /* Update the Hero border styles */
+      :global(.hero-border) {
+        border: 1px dashed var(--corner-text-color);
+        position: fixed;
+        top: 1rem;
+        bottom: 1rem;
+        left: 1rem;
+        right: 1rem;
+        pointer-events: none;
+      }
+
+      @media (max-width: 768px) {
+        :global(.hero-border) {
+          top: 0.5rem;
+          bottom: 0.5rem;
+          left: 0.5rem;
+          right: 0.5rem;
+        }
       }
     </style>
   </body>
